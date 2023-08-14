@@ -1,4 +1,4 @@
-import  { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Dna } from 'react-loader-spinner';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthContext';
@@ -17,7 +17,7 @@ function ListaPostagens() {
 
   useEffect(() => {
     if (token === '') {
-      toastAlerta('Você precisa estar logado', 'info');
+      toastAlerta('Você precisa estar logado','info');
       navigate('/');
     }
   }, [token]);
@@ -31,7 +31,7 @@ function ListaPostagens() {
       });
     } catch (error: any) {
       if (error.toString().includes('403')) {
-        toastAlerta('O token expirou, favor logar novamente', 'info')
+        toastAlerta('O token expirou, favor logar novamente','info')
         handleLogout()
       }
     }
@@ -43,6 +43,7 @@ function ListaPostagens() {
 
   return (
     <>
+     <div className='bg-pink-100 '>
       {postagens.length === 0 && (
         <Dna
           visible={true}
@@ -53,11 +54,12 @@ function ListaPostagens() {
           wrapperClass="dna-wrapper mx-auto"
         />
       )}
-      <div className='container mx-auto my-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
+      <div className='container  p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
         {postagens.map((postagem) => (
           <CardPostagem key={postagem.id} post={postagem} />
         ))}
       </div>
+    </div>
     </>
   );
 }

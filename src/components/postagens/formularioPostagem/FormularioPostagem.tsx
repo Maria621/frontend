@@ -89,7 +89,7 @@ function FormularioPostagem() {
   }
 
   function retornar() {
-    navigate('/postagens');
+    navigate('/mentorias');
   }
 
   async function gerarNovaPostagem(e: ChangeEvent<HTMLFormElement>) {
@@ -104,14 +104,14 @@ function FormularioPostagem() {
             Authorization: token,
           },
         });
-        toastAlerta('Postagem atualizada com sucesso', 'sucesso');
+        toastAlerta('Mentoria atualizada com sucesso','sucesso');
         retornar();
       } catch (error: any) {
         if (error.toString().includes('403')) {
-          toastAlerta('O token expirou, favor logar novamente', 'info')
+          toastAlerta('O token expirou, favor logar novamente', 'info');
           handleLogout()
         } else {
-          toastAlerta('Erro ao atualizar a Postagem', 'erro');
+          toastAlerta('Erro ao atualizar a Mentoria','erro');
         }
       }
     } else {
@@ -122,14 +122,14 @@ function FormularioPostagem() {
           },
         });
 
-        toastAlerta('Postagem cadastrada com sucesso', 'sucesso');
+        toastAlerta('Mentoria atualizada com sucesso','sucesso');
         retornar();
       } catch (error: any) {
         if (error.toString().includes('403')) {
-          toastAlerta('O token expirou, favor logar novamente', 'info')
+          toastAlerta('O token expirou, favor logar novamente', 'info');
           handleLogout()
         } else {
-          toastAlerta('Erro ao cadastrar a Postagem', 'erro');
+          toastAlerta('Erro ao atualizar a Mentoria','erro');
         }
       }
     }
@@ -138,12 +138,14 @@ function FormularioPostagem() {
   const carregandoTema = tema.descricao === '';
 
   return (
-    <div className="container flex flex-col mx-auto items-center">
-      <h1 className="text-4xl text-center my-8">{id !== undefined ? 'Editar Postagem' : 'Cadastrar Postagem'}</h1>
+   
+<div className="bg-pink-100 h-screen">
+    <div className="font-p container flex flex-col mx-auto items-center">
+      <h1 className="text-2xl text-center my-8">{id !== undefined ? 'Editar Postagem' : 'Cadastrar Postagem'}</h1>
 
       <form onSubmit={gerarNovaPostagem} className="flex flex-col w-1/2 gap-4">
         <div className="flex flex-col gap-2">
-          <label htmlFor="titulo">Titulo da postagem</label>
+          <label htmlFor="titulo">Titulo da Mentoria</label>
           <input
             value={postagem.titulo}
             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
@@ -153,9 +155,20 @@ function FormularioPostagem() {
             required
             className="border-2 border-slate-700 rounded p-2"
           />
-        </div>
+          </div>
+       <div className="flex flex-col w-full">
+            <label htmlFor="foto">Foto</label>
+            <input
+              type="text"
+              name="foto"
+              placeholder="Foto"
+              className="border-2 border-slate-700 rounded p-2"
+              value={postagem.foto} 
+              onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+            />
+          </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="titulo">Texto da postagem</label>
+          <label htmlFor="titulo">Descrição da Mentoria</label>
           <input
             value={postagem.texto}
             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
@@ -167,9 +180,9 @@ function FormularioPostagem() {
           />
         </div>
         <div className="flex flex-col gap-2">
-          <p>Tema da postagem</p>
-          <select name="tema" id="tema" className='border p-2 border-slate-800 rounded' onChange={(e) => buscarTemaPorId(e.currentTarget.value)}>
-            <option value="" selected disabled>Selecione um tema</option>
+          <p>Assunto da Mentoria</p>
+          <select name="tema" id="tema" className='border p-2 border-slate-800 rounded ' onChange={(e) => buscarTemaPorId(e.currentTarget.value)}>
+            <option value="" selected disabled>Selecione um Assunto</option>
             {temas.map((tema) => (
               <>
                 <option value={tema.id} >{tema.descricao}</option>
@@ -177,11 +190,13 @@ function FormularioPostagem() {
             ))}
           </select>
         </div>
-        <button disabled={carregandoTema} type='submit' className='rounded disabled:bg-slate-200 bg-indigo-400 hover:bg-indigo-800 text-white font-bold w-1/2 mx-auto block py-2'>
+        <button disabled={carregandoTema} type='submit' className='rounded disabled:bg-white-200 bg-green-500 hover:bg-green-300 text-white font-bold w-1/2 mx-auto block py-2'>
           {carregandoTema ? <span>Carregando</span> : id !== undefined ? 'Editar' : 'Cadastrar'}
         </button>
       </form>
     </div>
+    </div>
+   
   );
 }
 

@@ -46,7 +46,7 @@ function Login() {
             className="max-w-full h-auto md:w-2/3 md:ml-08 md:mt-0 mt-8  mr-24 "
           />
           <div className=" md:w-1/2 md:mr-12 bg-pink-400 flex flex-col w-full max-w-md px-4 py-12 bg-white border-4 border-purple-600/80 rounded-lg shadow dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10">
-            <div className=" self-center mb-6 text-2xl font-title text-gray-800 sm:text-4xl dark:text-white">
+            <div className=" self-center mb-6 text-2xl font-base text-gray-800 sm:text-3xl dark:text-white">
               Entre Na Sua Conta
             </div>
             <div className="mt-8">
@@ -90,7 +90,7 @@ function Login() {
 
               {userTipo ? (
                 <div className="flex w-full">
-                  <button type="submit" className=" flex justify-center py-2 px-4  bg-purple-600 hover:bg-green-100 focus:ring-green-100 focus:ring-offset-green-200 text-white w-full transition ease-in duration-200 text-center text-gray-200 font-title  shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                  <button type="submit" className=" flex justify-center py-2 px-4  bg-purple-600 hover:bg-green-100 focus:ring-green-100 focus:ring-offset-green-200 text-white w-full transition ease-in duration-200 text-center text-gray-200 font-base  shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
                     {isLoading ? <RotatingLines
                       strokeColor="white"
                       strokeWidth="5"
@@ -103,7 +103,7 @@ function Login() {
                 </div>
                 ) : (
                   <div className="flex w-full">
-                  <button type="submit" className=" flex justify-center py-2 px-4  bg-purple-600 hover:bg-green-100 focus:ring-green-100 focus:ring-offset-green-200 text-white w-full transition ease-in duration-200 text-center text-gray-200 font-title  shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                  <button type="submit" className=" flex justify-center py-2 px-4  bg-purple-600 hover:bg-green-400 focus:ring-green-100 focus:ring-offset-green-200 text-white w-full transition ease-in duration-200 text-center text-gray-200 font-base  shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
                     {isLoading ? <RotatingLines
                       strokeColor="white"
                       strokeWidth="5"
@@ -117,10 +117,10 @@ function Login() {
                   )}
 
                 <div className="flex items-center justify-center mt-6">
-                  <span className="text-lg font-title ">
+                  <span className="text-lg font-base ">
                     <p>Ainda não tem uma conta?{' '}
 
-                      <Link to="/cadastro" className=" font-semibold inline-flex items-center text-center text-purple-600 hover:text-green-100 dark:text-green-100 dark:hover:text-white">
+                    <Link to="/cadastro" className=" font-semibold inline-flex items-center text-center text-purple-600 hover:text-green-400 dark:text-green-400 dark:hover:text-white">
 
                         Cadastre-se
 

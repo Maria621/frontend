@@ -1,5 +1,5 @@
-import { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../contexts/AuthContext'
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
@@ -17,11 +17,16 @@ function classNames(...classes: string[]) {
 
 
 function Navbar() {
-
-  
-  const { usuario  } = useContext(AuthContext);
+  let navigate = useNavigate();
+  const { usuario, handleLogout } = useContext(AuthContext);
   const userTipo = usuario.tipo === 'mentor';
 
+
+  function logout() {
+    handleLogout()
+    alert('Usuário deslogado com sucesso')
+    navigate('/login')
+  }
 
   let navbarComponent
 
@@ -49,10 +54,9 @@ function Navbar() {
 
 
                 <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-
                   <div className="flex flex-shrink-0 items-center">
                     <img
-                      className="h-8 w-auto"
+                      className="h-14 w-auto"
                       src="https://i.imgur.com/OAY8uOO.png"
                       alt="Logo Minas na Area"
                     />
@@ -66,15 +70,15 @@ function Navbar() {
                           <div className="flex flex-shrink-0 absolute inset-0 left-[800px] items-center">
                             <div className='flex gap-8 text-xl text-white-100 font-title'>
                               <button className='rounded-nav w-20 transition ease-in-out bg-purple-600  hover:scale-110 hover:bg-pink-200  duration-300 '><Link to='/home'>Home</Link> </button>
-                              <button className='rounded-nav w-28 transition ease-in-out bg-purple-600  hover:scale-110 hover:bg-pink-200 duration-300 '><Link to='/postagens'>Mentorias</Link> </button>
-                              <button className='rounded-nav w-20 transition ease-in-out bg-purple-600  hover:scale-110 hover:bg-pink-200  duration-300 '><Link to='/login'>Contato</Link></button>
+                              <button className='rounded-nav w-28 transition ease-in-out bg-purple-600  hover:scale-110 hover:bg-pink-200 duration-300 '><Link to='/mentorias'>Mentorias</Link> </button>
+                              <button className='rounded-nav w-20 transition ease-in-out bg-purple-600  hover:scale-110 hover:bg-pink-200  duration-300 '><Link to='/contato'>Contato</Link></button>
                             </div>
                           </div>
                         </div>
 
                         <div className="hidden sm:ml-6 sm:block">
                           <div className="flex space-x-4">
-                            <Link to='/home' className='text-2xl text-white-100 font-title'>Minas na Área</Link>
+                            <Link to='/home' className='text-3xl text-white-100 mt-3 font-title'>Minas na Área</Link>
                           </div>
                         </div>
 
@@ -83,13 +87,13 @@ function Navbar() {
                             <div className="flex flex-col sm:flex-row sm:items-start">
                               <Disclosure.Button>
                                 <div className="hover:bg-purple-400 text-white-100 text-lg mb-2 ">
-                                  <Link className="block rounded-md px-4 font-title" to='/postagens'>Home</Link>
+                                  <Link className="block rounded-md px-4 font-title" to='/home'>Home</Link>
                                 </div>
                                 <div className="hover:bg-purple-400 text-white-100 text-lg mb-2 ">
-                                  <Link className="block rounded-md px-4 font-title" to='/home'>Mentorias</Link>
+                                  <Link className="block rounded-md px-4 font-title" to='/mentorias'>Mentorias</Link>
                                 </div>
                                 <div className="hover:bg-purple-400 text-white-100 text-lg mb-2 ">
-                                  <Link className="block rounded-md px-4 font-title" to='/home'>Contato</Link>
+                                  <Link className="block rounded-md px-4 font-title" to='/contato'>Contato</Link>
                                 </div>
                               </Disclosure.Button>
                             </div>
@@ -102,14 +106,14 @@ function Navbar() {
                           <div className="flex flex-shrink-0 absolute inset-0 left-[800px] items-center">
                             <div className='flex gap-8 text-xl text-white-100 font-title'>
                               <button className='rounded-nav w-20 transition ease-in-out bg-purple-600  hover:scale-110 hover:bg-pink-200  duration-300 '><Link to='/home'>Home</Link> </button>
-                              <button className='rounded-nav w-28 transition ease-in-out bg-purple-600  hover:scale-110 hover:bg-pink-200 duration-300 '><Link to='/postagens'>Agendamento</Link> </button>
-                              <button className='rounded-nav w-20 transition ease-in-out bg-purple-600  hover:scale-110 hover:bg-pink-200  duration-300 '><Link to='/login'>Contato</Link></button>
+                              <button className='rounded-nav w-28 transition ease-in-out bg-purple-600  hover:scale-110 hover:bg-pink-200 duration-300 '><Link to='/mentorias'>Agendamento</Link> </button>
+                              <button className='rounded-nav w-20 transition ease-in-out bg-purple-600  hover:scale-110 hover:bg-pink-200  duration-300 '><Link to='/contato'>Contato</Link></button>
                             </div>
                           </div>
                         </div>
-                        <div className="hidden sm:ml-6 sm:block">
+                        <div className="hidden sm:ml-4 sm:block">
                           <div className="flex space-x-4">
-                            <Link to='/home' className='text-2xl text-white-100 font-title'>Minas na Área</Link>
+                            <Link to='/home' className='text-3xl text-white-100 pt-2 font-title'>Minas na Área</Link>
                           </div>
                         </div>
                         <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
@@ -118,13 +122,13 @@ function Navbar() {
                             <div className="flex flex-col sm:flex-row sm:items-start">
                               <Disclosure.Button>
                                 <div className="hover:bg-purple-400 text-white-100 text-lg mb-2 ">
-                                  <Link className="block rounded-md px-4 font-title" to='/postagens'>Home</Link>
+                                  <Link className="block rounded-md px-4 font-title" to='/home'>Home</Link>
                                 </div>
                                 <div className="hover:bg-purple-400 text-white-100 text-lg mb-2 ">
-                                  <Link className="block rounded-md px-4 font-title" to='/home'>Agendamento</Link>
+                                  <Link className="block rounded-md px-4 font-title" to='/mentorias'>Mentorias</Link>
                                 </div>
                                 <div className="hover:bg-purple-400 text-white-100 text-lg mb-2 ">
-                                  <Link className="block rounded-md px-4 font-title" to='/home'>Contato</Link>
+                                  <Link className="block rounded-md px-4 font-title" to='/contato'>Contato</Link>
                                 </div>
                               </Disclosure.Button>
                             </div>
@@ -150,7 +154,7 @@ function Navbar() {
                       />
                     </Menu.Button>
                   </div>
-    
+
                   <Transition
                     as={Fragment}
                     enter="transition ease-out duration-100"
@@ -163,23 +167,23 @@ function Navbar() {
                     <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-pink-200 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                       <Menu.Item>
                         {({ active }) => (
-                          <a
-                            href="/perfil"
-                            className={classNames(active ? 'bg-pink-300' : '', 'block px-4 py-2 text-base text-purple-600')}
-                          >
-                            Perfil
-                          </a>
-                        )}
-                      </Menu.Item>
+                          <Link
+                          to="/perfil"
+                          className={classNames(active ? 'bg-pink-300' : '', 'block px-4 py-2 text-base text-purple-600')}
+                        >
+                          Perfil
+                        </Link>
+                      )}
+                    </Menu.Item>
 
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="/login"
-                            className={classNames(active ? 'bg-pink-300' : '', 'block px-4 py-2 text-base text-purple-600')}
-                          >
-                            Sair
-                          </a>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <a
+                          href="/login"
+                          className={classNames(active ? 'bg-pink-300' : '', 'block px-4 py-2 text-base text-purple-600')}
+                        >
+                          Sair
+                        </a>
                         )}
                       </Menu.Item>
                     </Menu.Items>
@@ -217,7 +221,7 @@ function Navbar() {
                 </div>
                 <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                   <div className="flex flex-shrink-0 items-center ">
-                    <Link to='/home' className='text-2xl text-white-100 font-title'>Minas na Área</Link>
+                    <Link to='/home' className='text-3xl text-white-100 font-title'>Minas na Área</Link>
                     <img
                       className="right-96 h-14 w-auto"
                       src="https://i.imgur.com/OAY8uOO.png"
@@ -225,10 +229,11 @@ function Navbar() {
                     />
                   </div>
                   <div className="hidden sm:ml-6 sm:block  ">
-                    <div className="flex flex-shrink-0 absolute inset-0 left-[900px] items-center">
+                    <div className="flex flex-shrink-0 absolute inset-0 left-[800px] items-center">
                       <div className='flex gap-8 text-xl text-white-100 font-title'>
                         <button className='rounded-nav w-20 transition ease-in-out bg-purple-600  hover:scale-110 hover:bg-pink-200  duration-300 '><Link to='/home'>Home</Link> </button>
                         <button className='rounded-nav w-20 transition ease-in-out bg-purple-600  hover:scale-110 hover:bg-pink-200 duration-300 '><Link to='/sobre'>Sobre</Link> </button>
+                        <button className='rounded-nav w-20 transition ease-in-out bg-purple-600  hover:scale-110 hover:bg-pink-200 duration-300 '><Link to='/contato'>Contato</Link> </button>
                         <button className='rounded-nav w-20 transition ease-in-out bg-purple-600  hover:scale-110 hover:bg-pink-200  duration-300 '><Link to='/login'>Entrar</Link></button>
                       </div>
                     </div>

@@ -44,10 +44,10 @@ function DeletarPostagem() {
   }, [id])
 
   function retornar() {
-    navigate("/postagens")
+    navigate("/mentorias")
   }
 
-  async function deletarPostagem() {
+  async function DeletarPostagem() {
     try {
       await deletar(`/postagem/${id}`, {
         headers: {
@@ -64,25 +64,27 @@ function DeletarPostagem() {
     retornar()
   }
   return (
-    <div className='container w-1/3 mx-auto'>
-      <h1 className='text-4xl text-center my-4'>Deletar postagem</h1>
+    <div className='bg-white-400 min-h-screen flex justify-center items-center'>
+    <div className=' container w-1/3 mx-auto'>
+      <h1 className='text-6xl text-p p-4'>Cancelar Mentoria</h1>
 
-      <p className='text-center font-semibold mb-4'>Você tem certeza de que deseja apagar a postagem a seguir?</p>
+      <p className='text-center p-4 font-p text-2xl mb-2'>Você tem certeza de que deseja cancelar a mentoria a seguir?</p>
 
-      <div className='border flex flex-col rounded-2xl overflow-hidden justify-between'>
-        <header className='py-2 px-6 bg-indigo-600 text-white font-bold text-2xl'>Postagem</header>
-        <div className="p-4">
-          <p className='text-xl h-full'>{postagem.titulo}</p>
-          <p>{postagem.texto}</p>
+      <div className='transition-transform transform hover:scale-110  bg-yellow-100  dark:bg-gray-800  shadow-lg mx-auto rounded-xl p-9'>
+      
+        <h4 className='text-gray-600 dark:text-white text-4xl '>{postagem.titulo}</h4>
+          <img src={postagem.foto} className='text-gray-600 dark:text-white text-3xl'></img>
+          <p className='text-gray-600 dark:text-white text-3xl'>{postagem.texto}</p>
         </div>
         <div className="flex">
-          <button className='text-slate-100 bg-red-400 hover:bg-red-600 w-full py-2' onClick={retornar}>Não</button>
-          <button className='w-full text-slate-100 bg-indigo-400 hover:bg-indigo-600 flex items-center justify-center' onClick={deletarPostagem}>
+          <button className='rounded-xl p-4 w-full text-white bg-green-600 hover:bg-green-400 flex items-center justify-center py-2 m-1 text-white-300' onClick={retornar}>Não</button>
+          <button className='rounded-xl p-4 text-white bg-pink-800 hover:bg-pink-600 w-full flex items-center justify-center py-2 m-1 text-white-300' onClick={DeletarPostagem}>
             Sim
           </button>
         </div>
       </div>
     </div>
+   
   )
 }
 

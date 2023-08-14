@@ -1,4 +1,3 @@
-
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -18,6 +17,8 @@ import FormularioPostagem from './components/postagens/formularioPostagem/Formul
 
 import Perfil from './paginas/perfil/Perfil';
 import DeletarPostagem from './components/postagens/deletarPostagem/DeletarPostagem';
+import Sobre from './paginas/sobre/Sobre';
+import Contato from './paginas/contato/Contato';
 
 function App() {
   
@@ -33,15 +34,17 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/cadastro" element={<Cadastro />} />
               <Route path="/home" element={<Home />} />
-              <Route path="/temas" element={<ListaTemas />} />
-              <Route path="/cadastroTema" element={<FormularioTema />} />
-              <Route path="/editarTema/:id" element={<FormularioTema />} />
-              <Route path="/deletarTema/:id" element={<DeletarTema />} />
-              <Route path="/postagens" element={<ListaPostagens />} />
-              <Route path="/cadastroPostagem" element={<FormularioPostagem />} />
-              <Route path="/editarPostagem/:id" element={<FormularioPostagem />} />
-              <Route path="/deletarPostagem/:id" element={<DeletarPostagem />} />
+              <Route path="/assuntos" element={<ListaTemas />} />
+              <Route path="/cadastroAssunto" element={<FormularioTema />} />
+              <Route path="/editarAssunto/:id" element={<FormularioTema />} />
+              <Route path="/deletarAssunto/:id" element={<DeletarTema />} />
+              <Route path="/mentorias" element={<ListaPostagens />} />
+              <Route path="/cadastroMentoria" element={<FormularioPostagem />} />
+              <Route path="/editarMentoria/:id" element={<FormularioPostagem />} />
+              <Route path="/cancelarMentoria/:id" element={<DeletarPostagem />} />
               <Route path="/perfil" element={<Perfil />} />
+              <Route path="/sobre" element={<Sobre />} />
+              <Route path="/contato" element={<Contato />} />
             </Routes>
           </div>
           <Footer />
