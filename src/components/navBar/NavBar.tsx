@@ -18,15 +18,9 @@ function classNames(...classes: string[]) {
 
 function Navbar() {
   let navigate = useNavigate();
-  const { usuario, handleLogout } = useContext(AuthContext);
+  const { usuario} = useContext(AuthContext);
   const userTipo = usuario.tipo === 'mentor';
 
-
-  function logout() {
-    handleLogout()
-    alert('Usuário deslogado com sucesso')
-    navigate('/login')
-  }
 
   let navbarComponent
 
